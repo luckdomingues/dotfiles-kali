@@ -1,0 +1,22 @@
+# FUNCOES
+
+# Desligar PC
+function _off (){
+  shutdown -h now
+}
+
+# cria arquivo BASH 
+function _new(){
+        if [ -f $1 ] ; then
+                echo "Arquivo já existe! Saindo..." 
+        else
+                echo '#!/usr/bin/env bash' >> $1
+                chmod +x $1
+                vim $1
+       fi
+}
+
+# Atualizacao S.O.
+function _update(){
+    sudo apt update && sudo apt upgrade -y && sudo apt clean && sudo apt autoclean && sudo apt autoremove -y  
+}

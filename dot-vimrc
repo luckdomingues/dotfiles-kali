@@ -1,0 +1,67 @@
+" LMDS - 25.05.2023
+" Instalar o vim-plug
+"
+" via obsidian - vim problema colando texto - resolvido
+set expandtab  
+set tabstop=4  
+set shiftwidth=2  
+set autoindent  
+set smartindent  
+set bg=dark  
+set nowrap  
+" set paste
+set cursorline
+" set cursorcolumn
+"colorscheme murphy
+" via https://dev.to/lissatransborda/criando-um-ambiente-de-desenvolvimento-com-vim-neovim-42
+set number
+set termguicolors
+"colorscheme pinkmare
+
+" via https://medium.com/code-prestige/como-instalar-plugins-no-vim-4adb56ae38a8
+" No final sempre digitar :PlugInstall
+call plug#begin('~/.vim/plugged')
+	Plug 'pangloss/vim-javascript'
+	Plug 'mxw/vim-jsx'
+	" https://github.com/preservim/nerdtree
+	Plug 'preservim/nerdtree'
+	Plug 'sheerun/vim-polyglot'
+	" barra personalizada - via https://dev.to/lissatransborda/criando-um-ambiente-de-desenvolvimento-com-vim-neovim-42
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	" Auto pairs for '(' '[' '{'
+	Plug 'jiangmiao/auto-pairs'
+	"Git plugin
+	Plug 'tpope/vim-fugitive'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'tpope/vim-rhubarb'
+	Plug 'junegunn/gv.vim'
+	" Used to shows icons on screen
+	Plug 'ryanoasis/vim-devicons'
+	"Plugin for search engine inside nvima - via https://youtu.be/N68nyJcVTE8
+	Plug 'nvim-lua/popup.nvim'
+	Plug 'nvim-lua/plenary.nvim'
+	" https://github.com/nvim-telescope/telescope.nvim
+	Plug 'nvim-telescope/telescope.nvim'
+	Plug 'nvim-telescope/telescope-fzy-native.nvim'
+	" tema terminal root - https://youtu.be/W8bFxnpJjF4?t=383
+	Plug 'matsuuu/pinkmare'
+call plug#end()
+
+
+" Start NERDTree and leave the cursor in it.
+"autocmd VimEnter * NERDTree
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Mapeamento de teclas
+" CTRL + n = chama o NERDTree
+nnoremap <C-n> :NERDTreeToggle<CR>
+" Find files using Telescope command-line sugar.
+"nnoremap <leader>ff <cmd>Telescope find_files<cr>
+"nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+"nnoremap <leader>fb <cmd>Telescope buffers<cr>
+"nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+let g:AutoPairsFlyMode = 1
